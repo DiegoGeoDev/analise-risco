@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# Dados geoespaciais brutos (não versionar shapefiles pesados)
+data/
+*.shp
+*.shx
+*.dbf
+*.prj
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Contexto local da IA (não público)
+CLAUDE.local.md
