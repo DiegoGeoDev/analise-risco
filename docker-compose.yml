@@ -18,5 +18,22 @@ services:
       timeout: 3s
       retries: 5
 
+  # Servidor de tiles: publica as tabelas PostGIS como MVT e reprojeta 4674->3857.
+  martin:
+    image: ghcr.io/maplibre/martin:latest
+    container_name: analise-risco-martin
+    restart: unless-stopped
+    # Conecta ao banco pela REDE INTERNA do compose (db:5432), não pela 5433 do host.
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    command: ["--config", "/config.yaml"]
+    volumes:
+      - ./martin/config.yaml:/config.yaml:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   pgdata:

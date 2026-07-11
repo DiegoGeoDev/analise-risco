@@ -1,0 +1,7 @@
+# Config do Martin: publica SÓ o schema `public` (tabelas de domínio).
+# Evita expor staging.* (ETL cru) e tiger.* (geocoder embutido no PostGIS).
+postgres:
+  connection_string: ${DATABASE_URL}
+  auto_publish:
+    from_schemas:
+      - public
