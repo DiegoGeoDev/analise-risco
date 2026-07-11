@@ -6,7 +6,7 @@ from app.db import get_db
 from app.models import Propriedade
 from app.schemas import PropriedadeOut
 
-# Agrupa as rotas deste recurso sob /propriedades
+
 router = APIRouter(prefix="/propriedades", tags=["propriedades"])
 
 

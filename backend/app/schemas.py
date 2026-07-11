@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel, ConfigDict
 
 
@@ -15,3 +17,18 @@ class PropriedadeOut(BaseModel):
     municipio: str | None
     uf: str | None
     area_ha: float | None
+
+
+class AnaliseOut(BaseModel):
+    """DTO de saída de uma análise — o resultado explicável e auditável."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    propriedade_id: int
+    score: float
+    nivel_risco: str
+    area_afetada_ha: float
+    fatores: dict
+    versao_algoritmo: str
+    created_at: datetime
